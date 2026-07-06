@@ -19,7 +19,7 @@ export const Deliverables = () => {
         subtitle="A massive asset library generated from a single production effort."
       />
 
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
         {deliverables.map((item, index) => (
           <GlassCard 
             key={index}

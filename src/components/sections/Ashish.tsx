@@ -74,31 +74,33 @@ export const Ashish = () => {
               </motion.div>
             ))}
           </div>
-
-          <motion.div 
-             initial={{ opacity: 0, y: 20 }}
-             whileInView={{ opacity: 1, y: 0 }}
-             viewport={{ once: true }}
-             className="mt-16 p-8 rounded-2xl bg-gradient-to-br from-white/5 to-transparent border border-white/10 relative"
-          >
-            <div className="text-6xl text-white/10 absolute top-4 left-4 font-serif">"</div>
-            <p className="text-xl md:text-2xl font-light text-zinc-200 leading-relaxed relative z-10 italic pl-6">
-              The goal has never been just to sing songs. It has always been about creating an experience that resonates with the soul while shaking the ground beneath your feet.
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mt-12 p-8 rounded-2xl bg-yugaant-red/10 border border-yugaant-red/20"
-          >
-            <h3 className="text-2xl font-bold text-white mb-4">Proposed Format: Intimate Interview Video</h3>
-            <p className="text-zinc-300 leading-relaxed">
-              To truly capture Ashish's personal evolution from rigorous classical training to commanding rock stages, we recommend a dedicated, 1-on-1 interview style video. This stripped-down, highly focused format provides the emotional breathing room needed to discuss vocal techniques, personal hurdles, and deep artistic philosophies without the beautiful chaos of the full band dynamic.
-            </p>
-          </motion.div>
         </div>
+      </div>
+
+      <div className="max-w-4xl mx-auto mt-24 space-y-12">
+        <motion.div 
+           initial={{ opacity: 0, y: 20 }}
+           whileInView={{ opacity: 1, y: 0 }}
+           viewport={{ once: true }}
+           className="p-8 rounded-2xl bg-gradient-to-br from-white/5 to-transparent border border-white/10 relative"
+        >
+          <div className="text-6xl text-white/10 absolute top-4 left-4 font-serif">"</div>
+          <p className="text-xl md:text-2xl font-light text-zinc-200 leading-relaxed relative z-10 italic pl-6">
+            The goal has never been just to sing songs. It has always been about creating an experience that resonates with the soul while shaking the ground beneath your feet.
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="p-8 rounded-2xl bg-yugaant-red/10 border border-yugaant-red/20"
+        >
+          <h3 className="text-2xl font-bold text-white mb-4">Proposed Format: Intimate Interview Video</h3>
+          <p className="text-zinc-300 leading-relaxed">
+            To truly capture Ashish's personal evolution from rigorous classical training to commanding rock stages, we recommend a dedicated, 1-on-1 interview style video. This stripped-down, highly focused format provides the emotional breathing room needed to discuss vocal techniques, personal hurdles, and deep artistic philosophies without the beautiful chaos of the full band dynamic.
+          </p>
+        </motion.div>
       </div>
     </Section>
   );

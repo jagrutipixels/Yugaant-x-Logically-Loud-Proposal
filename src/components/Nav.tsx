@@ -1,5 +1,6 @@
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import React, { useState, useEffect } from "react";
+import { Menu, X } from "lucide-react";
 
 const navItems = [
   { label: "Overview", href: "#overview" },
@@ -11,6 +12,7 @@ const navItems = [
 
 export const Nav = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,36 +23,71 @@ export const Nav = () => {
   }, []);
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "py-4 bg-yugaant-dark/80 backdrop-blur-lg border-b border-white/5" : "py-6 bg-transparent"
-      }`}
-    >
-      <div className="container mx-auto px-6 lg:px-12 flex items-center justify-between">
-        <div className="flex items-center">
-          <img src="https://lh3.googleusercontent.com/d/1IcHmYa-e-ZHifVPjO1WCOWE3c1Tz3Edv=w1000" alt="Yugaant" className="h-6 md:h-8 object-contain" />
-        </div>
-        <div className="hidden md:flex items-center space-x-8">
-          {navItems.map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              className="text-sm font-medium text-zinc-400 hover:text-white transition-colors"
-            >
-              {item.label}
-            </a>
-          ))}
-          <a
-            href="#proposal"
-            className="px-5 py-2 text-sm font-medium bg-white text-black rounded-full hover:bg-zinc-200 transition-colors"
+    <>
+      <motion.nav
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled ? "py-4 bg-yugaant-dark/80 backdrop-blur-lg border-b border-white/5" : "py-6 bg-transparent"
+        }`}
+      >
+        <div className="container mx-auto px-6 lg:px-12 flex items-center justify-between">
+          <div className="flex items-center">
+            <img src="https://lh3.googleusercontent.com/d/1IcHmYa-e-ZHifVPjO1WCOWE3c1Tz3Edv=w1000" alt="Yugaant" className="h-6 md:h-8 object-contain" />
+          </div>
+          <div className="hidden md:flex items-center space-x-8">
+            {navItems.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                className="text-sm font-medium text-zinc-400 hover:text-white transition-colors"
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+
+          <button 
+            className="md:hidden text-white p-2 -mr-2"
+            onClick={() => setMobileMenuOpen(true)}
           >
-            View Proposal
-          </a>
+            <Menu className="w-6 h-6" />
+          </button>
         </div>
-      </div>
-    </motion.nav>
+      </motion.nav>
+
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[60] bg-black/95 backdrop-blur-xl flex flex-col p-6"
+          >
+            <div className="flex justify-end">
+              <button 
+                className="text-white p-2 -mr-2 mt-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <X className="w-8 h-8" />
+              </button>
+            </div>
+            <div className="flex flex-col items-center justify-center flex-1 space-y-8">
+              {navItems.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-2xl font-light text-white hover:text-yugaant-red transition-colors"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 };

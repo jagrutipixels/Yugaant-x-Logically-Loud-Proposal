@@ -66,7 +66,7 @@ export const Ecosystem = () => {
         {/* Step 3: Branching Content */}
         <div className="w-full relative">
           {/* Desktop connecting lines */}
-          <div className="hidden md:block absolute top-0 left-1/6 right-1/6">
+          <div className="hidden md:block absolute top-0 left-[16.66%] right-[16.66%]">
             <AnimatedLine className="w-full h-px" delay={0.5} horizontal />
             <div className="absolute left-0 top-0 w-px h-6 bg-white/10" />
             <div className="absolute right-0 top-0 w-px h-6 bg-white/10" />
@@ -101,8 +101,8 @@ export const Ecosystem = () => {
               <AnimatedLine className="w-px h-6 md:hidden mb-0" delay={0.5} />
               <GlassCard className="w-full h-full flex flex-col items-center gap-3 p-6 bg-black/60 border-white/10 hover:border-yugaant-orange/50 transition-colors group">
                 <Film className="w-8 h-8 text-zinc-500 group-hover:text-yugaant-orange transition-colors" strokeWidth={1.5} />
-                <h4 className="font-bold uppercase text-sm text-center text-zinc-200">Mini-Documentary</h4>
-                <p className="text-xs text-zinc-500 text-center">10-15 Min Cinematic Cut</p>
+                <h4 className="font-bold uppercase text-sm text-center text-zinc-200">Interview Cut</h4>
+                <p className="text-xs text-zinc-500 text-center">8 Min Cinematic Cut</p>
               </GlassCard>
             </motion.div>
 
@@ -125,7 +125,7 @@ export const Ecosystem = () => {
           </div>
 
           {/* Desktop connecting lines back to center */}
-          <div className="hidden md:block absolute bottom-[-24px] left-1/6 right-1/6">
+          <div className="hidden md:block absolute bottom-[-24px] left-[16.66%] right-[16.66%]">
             <div className="absolute left-0 bottom-0 w-px h-6 bg-white/10" />
             <div className="absolute right-0 bottom-0 w-px h-6 bg-white/10" />
             <AnimatedLine className="w-full h-px absolute bottom-0" delay={0.7} horizontal />

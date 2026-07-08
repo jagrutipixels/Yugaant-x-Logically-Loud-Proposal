@@ -1,7 +1,7 @@
 import React from "react";
 import { Section, SectionTitle, GlassCard } from "../ui/Layout";
 import { motion } from "motion/react";
-import { Film, Music, Newspaper, Image as ImageIcon, Briefcase, Scale, Camera } from "lucide-react";
+import { Film, Music, Newspaper, Image as ImageIcon, Briefcase, Scale } from "lucide-react";
 
 const requirements = [
   {
@@ -33,11 +33,6 @@ const requirements = [
     icon: <Scale className="w-6 h-6 text-yugaant-red" />,
     title: "Legal",
     items: ["Music usage approval", "Footage permissions", "Photography permissions", "Re-upload permissions", "Credit preferences"]
-  },
-  {
-    icon: <Camera className="w-6 h-6 text-white" />,
-    title: "Shoot Day",
-    items: ["Wardrobe references", "Instrument list", "Props", "Merchandise", "Special requests", "Technical requirements"]
   }
 ];
 

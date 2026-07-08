@@ -27,10 +27,6 @@ export const CinematicEnding = () => {
           <span>Yugaant</span>
           <span className="text-yugaant-red">×</span>
           <span>Logically Loud</span>
-          <span className="text-yugaant-red">×</span>
-          <span>Savoir Studio</span>
-          <span className="text-yugaant-red">×</span>
-          <span>Karn Marketing Warfare</span>
         </div>
       </motion.div>
       

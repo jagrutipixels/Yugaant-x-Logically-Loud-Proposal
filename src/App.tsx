@@ -20,6 +20,7 @@ const PodcastFormats = lazy(() => import('./components/sections/PodcastFormats')
 const Moodboard = lazy(() => import('./components/sections/Moodboard').then(m => ({ default: m.Moodboard })));
 const QuestionBank = lazy(() => import('./components/sections/QuestionBank').then(m => ({ default: m.QuestionBank })));
 const Requirements = lazy(() => import('./components/sections/Requirements').then(m => ({ default: m.Requirements })));
+const ExecutionTimeline = lazy(() => import('./components/sections/ExecutionTimeline').then(m => ({ default: m.ExecutionTimeline })));
 const CinematicEnding = lazy(() => import('./components/sections/CinematicEnding').then(m => ({ default: m.CinematicEnding })));
 
 export default function App() {
@@ -44,6 +45,7 @@ export default function App() {
             <Moodboard />
             <QuestionBank />
             <Requirements />
+            <ExecutionTimeline />
             <CinematicEnding />
           </Suspense>
         </main>

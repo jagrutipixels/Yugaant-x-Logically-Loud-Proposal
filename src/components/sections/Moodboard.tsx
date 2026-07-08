@@ -35,20 +35,24 @@ export const Moodboard = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="group relative rounded-2xl overflow-hidden aspect-video border border-white/5 bg-black/50"
               >
-                <div className="absolute inset-0 bg-black/40 z-10 group-hover:bg-transparent transition-colors duration-500" />
+                <div className="absolute inset-0 bg-black/40 z-10 group-hover:bg-black/70 transition-colors duration-500" />
                 <img 
                   src={`https://img.youtube.com/vi/${ref.id}/maxresdefault.jpg`}
                   alt={ref.title}
-                  className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700 transform group-hover:scale-105"
+                  className="w-full h-full object-cover filter grayscale group-hover:grayscale-[0.5] transition-all duration-700 transform group-hover:scale-110"
                 />
+                <div className="absolute inset-0 z-20 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <span className="text-yugaant-red text-xs font-bold tracking-widest uppercase mb-1">Visual Reference</span>
+                  <h4 className="text-white text-lg font-semibold">{ref.title}</h4>
+                </div>
                 <a 
                   href={`https://youtube.com/watch?v=${ref.id}`} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="absolute bottom-4 left-4 z-20 px-4 py-2 bg-black/60 backdrop-blur-md rounded-full text-xs text-white font-medium opacity-0 group-hover:opacity-100 transition-opacity flex items-center space-x-2"
+                  className="absolute top-4 right-4 z-30 px-4 py-2 bg-black/60 backdrop-blur-md rounded-full text-xs text-white font-medium opacity-0 group-hover:opacity-100 transition-opacity flex items-center space-x-2 hover:bg-yugaant-red"
                 >
-                  <svg className="w-4 h-4 text-yugaant-red" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
-                  <span>View Source</span>
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                  <span>Play</span>
                 </a>
               </motion.div>
             ))}
@@ -67,20 +71,24 @@ export const Moodboard = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="group relative rounded-2xl overflow-hidden aspect-video border border-white/5 bg-black/50"
               >
-                <div className="absolute inset-0 bg-black/40 z-10 group-hover:bg-transparent transition-colors duration-500" />
+                <div className="absolute inset-0 bg-black/40 z-10 group-hover:bg-black/70 transition-colors duration-500" />
                 <img 
                   src={`https://img.youtube.com/vi/${ref.id}/maxresdefault.jpg`}
                   alt={ref.title}
-                  className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700 transform group-hover:scale-105"
+                  className="w-full h-full object-cover filter grayscale group-hover:grayscale-[0.5] transition-all duration-700 transform group-hover:scale-110"
                 />
+                <div className="absolute inset-0 z-20 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <span className="text-yugaant-red text-xs font-bold tracking-widest uppercase mb-1">Visual Reference</span>
+                  <h4 className="text-white text-lg font-semibold">{ref.title}</h4>
+                </div>
                 <a 
                   href={`https://youtube.com/watch?v=${ref.id}`} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="absolute bottom-4 left-4 z-20 px-4 py-2 bg-black/60 backdrop-blur-md rounded-full text-xs text-white font-medium opacity-0 group-hover:opacity-100 transition-opacity flex items-center space-x-2"
+                  className="absolute top-4 right-4 z-30 px-4 py-2 bg-black/60 backdrop-blur-md rounded-full text-xs text-white font-medium opacity-0 group-hover:opacity-100 transition-opacity flex items-center space-x-2 hover:bg-yugaant-red"
                 >
-                  <svg className="w-4 h-4 text-yugaant-red" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
-                  <span>View Source</span>
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                  <span>Play</span>
                 </a>
               </motion.div>
             ))}

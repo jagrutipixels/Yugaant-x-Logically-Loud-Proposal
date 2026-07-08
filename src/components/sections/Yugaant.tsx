@@ -2,6 +2,7 @@ import React from "react";
 import { Section, SectionTitle, GlassCard } from "../ui/Layout";
 import { motion } from "motion/react";
 import { Disc3, Music, Award, Mic2 } from "lucide-react";
+import { AnimatedNumber } from "../ui/AnimatedNumber";
 
 export const Yugaant = () => {
   return (
@@ -48,19 +49,19 @@ export const Yugaant = () => {
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
         {[
-          { label: "Formed", value: "2018" },
-          { label: "Live Shows", value: "150+" },
-          { label: "Originals", value: "12" },
-          { label: "Monthly Listeners", value: "500K+" }
+          { label: "Formed", end: 2018, prefix: "", suffix: "", start: 2010 },
+          { label: "Live Shows", end: 150, prefix: "", suffix: "+", start: 0 },
+          { label: "Originals", end: 12, prefix: "", suffix: "", start: 0 },
+          { label: "Monthly Listeners", end: 500, prefix: "", suffix: "K+", start: 0 }
         ].map((stat, i) => (
           <GlassCard key={i} className="text-center py-8">
-            <div className="text-3xl md:text-5xl font-bold text-white mb-2">{stat.value}</div>
+            <div className="text-3xl md:text-5xl font-bold text-white mb-2">
+              <AnimatedNumber start={stat.start} value={stat.end} prefix={stat.prefix} suffix={stat.suffix} duration={2.5} />
+            </div>
             <div className="text-xs uppercase tracking-widest text-zinc-500 font-medium">{stat.label}</div>
           </GlassCard>
         ))}
       </div>
-
-
     </Section>
   );
 };

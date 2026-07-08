@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Section, SectionTitle } from "../ui/Layout";
-import { motion } from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
 
 const timelineEvents = [
   {
@@ -31,6 +31,14 @@ const timelineEvents = [
 ];
 
 export const Ashish = () => {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start center", "end center"],
+  });
+
+  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+
   return (
     <Section id="ashish" className="bg-white/[0.02]">
       <SectionTitle
@@ -54,23 +62,39 @@ export const Ashish = () => {
           </div>
         </div>
 
-        <div className="lg:w-2/3">
-          <div className="relative border-l border-white/10 pl-8 md:pl-12 py-4 space-y-16">
+        <div className="lg:w-2/3" ref={containerRef}>
+          <div className="relative pl-8 md:pl-12 py-4 space-y-16">
+            {/* Background Line */}
+            <div className="absolute left-0 top-0 bottom-0 w-px bg-white/10" />
+            {/* Animated Foreground Line */}
+            <motion.div 
+              className="absolute left-0 top-0 w-px bg-gradient-to-b from-yugaant-red to-yugaant-orange origin-top" 
+              style={{ height: lineHeight }} 
+            />
+
             {timelineEvents.map((event, index) => (
               <motion.div 
                 key={index}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-10%" }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="relative"
+                viewport={{ once: true, margin: "-20%" }}
+                transition={{ duration: 0.5 }}
+                className="relative group"
               >
-                <div className="absolute -left-[41px] md:-left-[57px] top-1 w-4 h-4 rounded-full bg-yugaant-red ring-4 ring-black" />
-                <span className="text-sm font-bold tracking-widest text-zinc-500 uppercase mb-2 block">
+                {/* Node Dot */}
+                <motion.div 
+                  className="absolute -left-[37px] md:-left-[53px] top-1 w-4 h-4 rounded-full bg-zinc-800 border-2 border-white/20 transition-all duration-500 group-hover:bg-yugaant-red group-hover:border-yugaant-red group-hover:shadow-[0_0_15px_rgba(193,18,31,0.6)]" 
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true, margin: "-20%" }}
+                  transition={{ type: "spring", delay: 0.2 }}
+                />
+                
+                <span className="text-sm font-bold tracking-widest text-zinc-500 uppercase mb-2 block group-hover:text-zinc-300 transition-colors duration-300">
                   {event.year}
                 </span>
-                <h4 className="text-2xl font-semibold text-white mb-3">{event.title}</h4>
-                <p className="text-zinc-400 leading-relaxed max-w-xl">{event.description}</p>
+                <h4 className="text-2xl font-semibold text-white mb-3 group-hover:text-yugaant-red transition-colors duration-300">{event.title}</h4>
+                <p className="text-zinc-400 leading-relaxed max-w-xl group-hover:text-zinc-300 transition-colors duration-300">{event.description}</p>
               </motion.div>
             ))}
           </div>

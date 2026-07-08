@@ -14,11 +14,13 @@ import { ScrollToTop } from './components/ScrollToTop';
 const Ashish = lazy(() => import('./components/sections/Ashish').then(m => ({ default: m.Ashish })));
 const WhyPodcast = lazy(() => import('./components/sections/WhyPodcast').then(m => ({ default: m.WhyPodcast })));
 const Ecosystem = lazy(() => import('./components/sections/Ecosystem').then(m => ({ default: m.Ecosystem })));
+const Workflow = lazy(() => import('./components/sections/Workflow').then(m => ({ default: m.Workflow })));
 const Deliverables = lazy(() => import('./components/sections/Deliverables').then(m => ({ default: m.Deliverables })));
 const PodcastFormats = lazy(() => import('./components/sections/PodcastFormats').then(m => ({ default: m.PodcastFormats })));
 const Moodboard = lazy(() => import('./components/sections/Moodboard').then(m => ({ default: m.Moodboard })));
 const QuestionBank = lazy(() => import('./components/sections/QuestionBank').then(m => ({ default: m.QuestionBank })));
-const FinalRecommendation = lazy(() => import('./components/sections/FinalRecommendation').then(m => ({ default: m.FinalRecommendation })));
+const Requirements = lazy(() => import('./components/sections/Requirements').then(m => ({ default: m.Requirements })));
+const CinematicEnding = lazy(() => import('./components/sections/CinematicEnding').then(m => ({ default: m.CinematicEnding })));
 
 export default function App() {
   return (
@@ -36,11 +38,13 @@ export default function App() {
             <Ashish />
             <WhyPodcast />
             <Ecosystem />
+            <Workflow />
             <Deliverables />
             <PodcastFormats />
             <Moodboard />
             <QuestionBank />
-            <FinalRecommendation />
+            <Requirements />
+            <CinematicEnding />
           </Suspense>
         </main>
         <footer className="py-8 text-center text-white/40 text-sm border-t border-white/10 mt-20 backdrop-blur-md bg-black/20 relative z-20">

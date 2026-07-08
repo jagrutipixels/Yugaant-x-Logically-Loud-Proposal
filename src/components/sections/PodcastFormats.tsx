@@ -76,15 +76,18 @@ export const PodcastFormats = () => {
               activeTab === format.id && (
                 <motion.div
                   key={format.id}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.3 }}
-                  className="bg-white/5 border border-white/10 rounded-3xl p-8 md:p-12 h-full flex flex-col justify-center"
+                  initial={{ opacity: 0, x: 20, filter: "blur(5px)" }}
+                  animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+                  exit={{ opacity: 0, x: -20, filter: "blur(5px)" }}
+                  transition={{ duration: 0.4, ease: "easeOut" }}
+                  className="bg-white/5 border border-white/10 rounded-3xl p-8 md:p-12 h-full flex flex-col justify-center relative overflow-hidden"
                 >
-                  <h3 className="text-3xl font-bold text-white mb-8">{format.title}</h3>
+                  {/* Subtle background glow */}
+                  <div className="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-yugaant-red/10 rounded-full blur-[80px] pointer-events-none" />
                   
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <h3 className="text-3xl font-bold text-white mb-8 relative z-10">{format.title}</h3>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
                     <div>
                       <h4 className="text-sm font-bold tracking-widest text-zinc-500 uppercase mb-2">Purpose</h4>
                       <p className="text-zinc-200">{format.purpose}</p>

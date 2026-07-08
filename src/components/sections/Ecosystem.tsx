@@ -1,116 +1,154 @@
 import React from "react";
-import { Section, SectionTitle } from "../ui/Layout";
+import { Section, SectionTitle, GlassCard } from "../ui/Layout";
 import { motion } from "motion/react";
+import { BrainCircuit, Clapperboard, Mic, Film, Smartphone, Globe } from "lucide-react";
 
-const Node = ({ children, className, delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: "-10%" }}
-    transition={{ duration: 0.5, delay }}
-    className={`p-6 rounded-2xl border text-center font-medium shadow-[0_0_30px_rgba(0,0,0,0.5)] backdrop-blur-md relative z-10 ${className}`}
-  >
-    {children}
-  </motion.div>
-);
-
-const VLine = ({ className = "" }: { className?: string }) => (
-  <div className={`w-px bg-white/20 ${className}`}></div>
-);
-
-const HLine = ({ className = "" }: { className?: string }) => (
-  <div className={`h-px bg-white/20 ${className}`}></div>
+const AnimatedLine = ({ className = "", delay = 0, horizontal = false }: { className?: string, delay?: number, horizontal?: boolean }) => (
+  <div className={`bg-white/10 ${className} relative overflow-hidden flex-shrink-0`}>
+    <motion.div
+      initial={horizontal ? { x: "-100%" } : { y: "-100%" }}
+      whileInView={horizontal ? { x: "100%" } : { y: "100%" }}
+      viewport={{ once: true }}
+      transition={{ duration: 1.5, delay, repeat: Infinity, ease: "linear" }}
+      className={`absolute inset-0 ${horizontal ? 'bg-gradient-to-r' : 'bg-gradient-to-b'} from-transparent via-yugaant-orange to-transparent opacity-50`}
+    />
+  </div>
 );
 
 export const Ecosystem = () => {
   return (
-    <Section id="ecosystem" className="bg-white/[0.02]">
+    <Section id="ecosystem" className="bg-black/20">
       <SectionTitle
         title="Content Ecosystem"
         subtitle="How one master recording fuels a comprehensive digital presence."
+        className="text-center mx-auto"
       />
 
-      <div className="max-w-5xl mx-auto flex flex-col items-center mt-12 px-4 relative">
-        {/* Level 1 */}
-        <Node delay={0.1} className="w-full max-w-sm bg-white/10 border-white/20 text-white">
-          Deep Research & Pre-Production
-        </Node>
+      <div className="max-w-5xl mx-auto mt-16 px-4 flex flex-col items-center relative z-10">
+        
+        {/* Step 1: Pre-Production */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="w-full max-w-md"
+        >
+          <GlassCard className="flex flex-col items-center gap-3 p-6 bg-black/80 border-white/10 hover:border-white/30 transition-colors">
+            <BrainCircuit className="w-8 h-8 text-zinc-400" strokeWidth={1.5} />
+            <h3 className="font-bold tracking-widest uppercase text-sm text-zinc-200">Deep Research & Pre-Production</h3>
+          </GlassCard>
+        </motion.div>
 
-        <VLine className="h-8 md:h-12" />
+        <AnimatedLine className="w-px h-10 md:h-12" delay={0} />
 
-        {/* Level 2 */}
-        <Node delay={0.2} className="w-full max-w-sm bg-white/10 border-white/20 text-white">
-          Master Shoot (Podcast & Documentary Elements)
-        </Node>
+        {/* Step 2: Core Master Shoot */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="w-full max-w-xl relative"
+        >
+          <div className="absolute inset-0 bg-yugaant-red/20 blur-3xl rounded-full" />
+          <GlassCard className="relative flex flex-col items-center gap-4 p-8 bg-gradient-to-b from-yugaant-red/10 to-black/90 border-yugaant-red/50 shadow-[0_0_40px_rgba(255,84,0,0.15)]">
+            <div className="p-4 bg-yugaant-red/20 rounded-full border border-yugaant-red/30">
+              <Clapperboard className="w-10 h-10 text-yugaant-orange" strokeWidth={1.5} />
+            </div>
+            <div className="text-center">
+              <h3 className="font-bold tracking-widest uppercase text-lg text-white mb-1">The Master Shoot</h3>
+              <p className="text-sm text-zinc-400">High-Fidelity Podcast & Documentary Capture</p>
+            </div>
+          </GlassCard>
+        </motion.div>
 
-        {/* Trunk down from Master Shoot */}
-        <VLine className="h-8 md:h-12" />
+        <AnimatedLine className="w-px h-10 md:h-12" delay={0.4} />
 
-        {/* Tree Branching section */}
+        {/* Step 3: Branching Content */}
         <div className="w-full relative">
-          {/* Desktop Horizontal Line top */}
-          <HLine className="hidden md:block absolute top-0 left-[16.66%] right-[16.66%]" />
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-y-8 md:gap-y-0 relative">
-            
-            {/* Branch 1 */}
-            <div className="flex flex-col items-center">
-              <VLine className="hidden md:block h-8" />
-              <Node delay={0.3} className="w-full max-w-[260px] h-full flex items-center justify-center bg-yugaant-red/10 border-yugaant-red/30 text-yugaant-red">
-                Long-Form Podcast Episode
-              </Node>
-              {/* Mobile connecting line */}
-              <VLine className="md:hidden h-8 -mb-8 mt-auto z-0" />
-            </div>
-
-            {/* Branch 2 */}
-            <div className="flex flex-col items-center">
-              <VLine className="hidden md:block h-8" />
-              <Node delay={0.4} className="w-full max-w-[260px] h-full flex items-center justify-center bg-yugaant-red/10 border-yugaant-red/30 text-yugaant-red">
-                Mini-Documentary Cut
-              </Node>
-              {/* Mobile connecting line */}
-              <VLine className="md:hidden h-8 -mb-8 mt-auto z-0" />
-            </div>
-
-            {/* Branch 3 */}
-            <div className="flex flex-col items-center">
-              <VLine className="hidden md:block h-8" />
-              <Node delay={0.5} className="w-full max-w-[260px] h-full flex items-center justify-center bg-yugaant-red/10 border-yugaant-red/30 text-yugaant-red">
-                Micro-Content Extraction<br/>(Shorts & Reels)
-              </Node>
-            </div>
-            
+          {/* Desktop connecting lines */}
+          <div className="hidden md:block absolute top-0 left-1/6 right-1/6">
+            <AnimatedLine className="w-full h-px" delay={0.5} horizontal />
+            <div className="absolute left-0 top-0 w-px h-6 bg-white/10" />
+            <div className="absolute right-0 top-0 w-px h-6 bg-white/10" />
           </div>
 
-          {/* Desktop Horizontal Line bottom */}
-          <div className="hidden md:flex flex-col items-center">
-            {/* The vertical drops from each node */}
-            <div className="relative w-full h-8">
-              <VLine className="absolute left-[16.66%] top-0 h-8" />
-              <VLine className="absolute left-1/2 top-0 h-8 -translate-x-1/2" />
-              <VLine className="absolute right-[16.66%] top-0 h-8" />
-            </div>
-            {/* The horizontal connector at the bottom */}
-            <HLine className="w-[66.66%] relative" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 pt-0 md:pt-6">
+            
+            {/* Podcast */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="flex flex-col items-center w-full"
+            >
+              <AnimatedLine className="w-px h-6 md:hidden mb-0" delay={0.4} />
+              <GlassCard className="w-full h-full flex flex-col items-center gap-3 p-6 bg-black/60 border-white/10 hover:border-yugaant-orange/50 transition-colors group">
+                <Mic className="w-8 h-8 text-zinc-500 group-hover:text-yugaant-orange transition-colors" strokeWidth={1.5} />
+                <h4 className="font-bold uppercase text-sm text-center text-zinc-200">Long-Form Podcast</h4>
+                <p className="text-xs text-zinc-500 text-center">45-60 Min Audio/Video</p>
+              </GlassCard>
+            </motion.div>
+
+            {/* Doc Cut */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5 }}
+              className="flex flex-col items-center w-full"
+            >
+              <AnimatedLine className="w-px h-6 md:hidden mb-0" delay={0.5} />
+              <GlassCard className="w-full h-full flex flex-col items-center gap-3 p-6 bg-black/60 border-white/10 hover:border-yugaant-orange/50 transition-colors group">
+                <Film className="w-8 h-8 text-zinc-500 group-hover:text-yugaant-orange transition-colors" strokeWidth={1.5} />
+                <h4 className="font-bold uppercase text-sm text-center text-zinc-200">Mini-Documentary</h4>
+                <p className="text-xs text-zinc-500 text-center">10-15 Min Cinematic Cut</p>
+              </GlassCard>
+            </motion.div>
+
+            {/* Shorts */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.6 }}
+              className="flex flex-col items-center w-full"
+            >
+              <AnimatedLine className="w-px h-6 md:hidden mb-0" delay={0.6} />
+              <GlassCard className="w-full h-full flex flex-col items-center gap-3 p-6 bg-black/60 border-white/10 hover:border-yugaant-orange/50 transition-colors group">
+                <Smartphone className="w-8 h-8 text-zinc-500 group-hover:text-yugaant-orange transition-colors" strokeWidth={1.5} />
+                <h4 className="font-bold uppercase text-sm text-center text-zinc-200">Micro-Content</h4>
+                <p className="text-xs text-zinc-500 text-center">Shorts & Reels</p>
+              </GlassCard>
+            </motion.div>
+
+          </div>
+
+          {/* Desktop connecting lines back to center */}
+          <div className="hidden md:block absolute bottom-[-24px] left-1/6 right-1/6">
+            <div className="absolute left-0 bottom-0 w-px h-6 bg-white/10" />
+            <div className="absolute right-0 bottom-0 w-px h-6 bg-white/10" />
+            <AnimatedLine className="w-full h-px absolute bottom-0" delay={0.7} horizontal />
           </div>
         </div>
 
-        {/* Trunk down to Distribution */}
-        <VLine className="h-8 md:h-12 hidden md:block" />
-        <VLine className="h-8 md:hidden" />
+        <AnimatedLine className="w-px h-10 md:h-12 mt-0 md:mt-6" delay={0.8} />
 
-        {/* Level 4 */}
-        <Node delay={0.6} className="w-full max-w-xl bg-yugaant-orange/10 border-yugaant-orange/30 text-yugaant-orange">
-          Multi-Platform Distribution (IG, YT, Spotify, LinkedIn)
-        </Node>
+        {/* Step 4: Distribution */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.7 }}
+          className="w-full max-w-2xl"
+        >
+          <GlassCard className="flex flex-col items-center gap-3 p-6 bg-black/80 border-yugaant-orange/30 shadow-[0_0_20px_rgba(255,84,0,0.05)]">
+            <Globe className="w-8 h-8 text-yugaant-orange" strokeWidth={1.5} />
+            <h3 className="font-bold tracking-widest uppercase text-sm text-white">Multi-Platform Distribution</h3>
+            <p className="text-xs text-zinc-400">YouTube, Spotify, Instagram, TikTok, LinkedIn</p>
+          </GlassCard>
+        </motion.div>
 
-        <VLine className="h-8 md:h-12" />
-
-        {/* Level 5 */}
-        <Node delay={0.7} className="w-full max-w-sm bg-white text-black font-bold border-white">
-          PR Case Study & Portfolio Updates
-        </Node>
       </div>
     </Section>
   );
